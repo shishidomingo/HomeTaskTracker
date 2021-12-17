@@ -1,26 +1,50 @@
-import java.time.LocalTime;
-import java.time.LocalDateTime;
 public class DailyTask implements Task{
 
     public String name;
     public boolean isComplete;
-    public int[] lastCompleted = new int[5];
+    public int[] lastCompleted = new int[2];
     public int hourDone;
     public int minuteDone;
-    public int[] dueDate = new int[5];
+    public int[] dueDate = new int[2];
 
-    Task(String name, int[] dueDate){
-
+    DailyTask(String name, int[] dueDate){
+        name = name;
+        dueDate = dueDate;
+        isComplete = false;
     }
 
 
-    public void setLastCompleted(DailyTask task, int hour, int minute, int day, int month, int year){
-        task.lastCompleted = {hour, minute, day, month, year};
-    };
+      @Override
+    public void setLastCompleted(int hr, int min) {
+        this.lastCompleted = new int[]{hr,min};
+        checkIfComplete(this);
+    }
 
-    public int[] getLastCompleted(DailyTask task)[
-            
-            ]
+    @Override
+    public int[] getLastCompleted() {
+        return this.lastCompleted;
+    }
 
+    @Override
+    public void setDueDate(DailyTask task, int hr, int min) {
+        task.dueDate = new int[] {hr, min};
+    }
 
+    @Override
+    public int[] getDueDate(DailyTask task) {
+        return task.dueDate;
+    }
+
+    @Override
+    public boolean checkIfComplete() {
+        if (getLastCompleted()[0] < getDueDate(this)[0] && getLastCompleted()[1] < getDueDate(this)[1]){
+            return true;
+        }
+        else{return false;};
+    }
+
+    @Override
+    public boolean checkIfPastDue() {
+        return false;
+    }
 }
