@@ -1,19 +1,25 @@
 public interface Task {
     //public void setLastCompleted();
-    public int[] getLastCompleted();
+    //public int[] getLastCompleted();
     //public void setDueDate();
     //public int[] getDueDate();
     //public boolean checkIfComplete();
 
-    void setLastCompleted(int hr, int min);
+    void setLastCompletedTime(int hr, int min);
 
-    //int[] getLastCompleted(DailyTask task);
+    int[] getLastCompletedTime();
 
-    void setDueDate(DailyTask task, int hr, int min);
+    void setLastCompletedDay(String day);
 
-    int[] getDueDate(DailyTask task);
+    String getLastCompletedDay();
 
-    boolean checkIfComplete(DailyTask task);
+    void setDueTime(int hr, int min);
+
+    int[] getDueTime();
+
+    //void setDueDay(String day);
+
+    //void getDueDay();
 
     boolean checkIfComplete();
 
