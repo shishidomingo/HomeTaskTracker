@@ -9,9 +9,9 @@ public interface Task {
 
     int[] getLastCompletedTime();
 
-    void setLastCompletedDay(String day);
+    //void setLastCompletedDay(String day);
 
-    String getLastCompletedDay();
+    //String getLastCompletedDay();
 
     void setDueTime(int hr, int min);
 

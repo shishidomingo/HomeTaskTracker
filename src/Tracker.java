@@ -5,6 +5,23 @@ public class Tracker {
     public static void main(String[] args) {
         int[] dueTime = new int[] {8,30};
         Scanner scanner = new Scanner(System.in);
+        System.out.println("How many daily tasks would you like to track?");
+        int dailyTaskCount = scanner.nextInt();
+        System.out.println("How many weekly tasks would you like to track?");
+        int weeklyTaskCount = scanner.nextInt();
+        //System.out.println("How many ongoing tasks would you like to track?");
+
+        for (int i = 0; i < dailyTaskCount; i++){
+            System.out.println("Enter name of task #" + (i+1);
+            String taskName = scanner.next();
+            System.out.println("Enter due hour of task #" + (i+1));
+            int taskDueHour = scanner.nextInt();
+            System.out.println("Enter due minutes of task #" + (i+1));
+            int taskDueMinute = scanner.nextInt();
+
+            Task 
+        }
+
 
 
         Task feedTheDog = new DailyTask("feed the dog", dueTime);
