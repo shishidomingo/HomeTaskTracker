@@ -9,51 +9,59 @@ public class Tracker {
         int dailyTaskCount = scanner.nextInt();
         System.out.println("How many weekly tasks would you like to track?");
         int weeklyTaskCount = scanner.nextInt();
+        scanner.nextLine(); // consume newline char prior to entering loop
         //System.out.println("How many ongoing tasks would you like to track?");
-
+        Task [] myDailyTasks = new DailyTask[dailyTaskCount];
         for (int i = 0; i < dailyTaskCount; i++){
-            System.out.println("Enter name of task #" + (i+1);
-            String taskName = scanner.next();
+            System.out.println("Enter name of task #" + (i+1));
+            String taskName = scanner.nextLine();
             System.out.println("Enter due hour of task #" + (i+1));
             int taskDueHour = scanner.nextInt();
             System.out.println("Enter due minutes of task #" + (i+1));
             int taskDueMinute = scanner.nextInt();
+            scanner.nextLine();  //consume newline char prior to next loop
+            int[] dueTimeNew = new int[]{taskDueHour, taskDueMinute};
+            myDailyTasks[i] = new DailyTask(taskName, dueTimeNew);
 
-            Task 
+            System.out.println(myDailyTasks[i].toString());
         }
 
 
 
-        Task feedTheDog = new DailyTask("feed the dog", dueTime);
+
+        //Task feedTheDog = new DailyTask("feed the dog", dueTime);
+
+        System.out.println("Task 1 name: ");
+        System.out.println(myDailyTasks[0].getName());
 
         System.out.println("Last completed time:");
-        System.out.print(feedTheDog.getLastCompletedTime()[0]);
+        System.out.print(myDailyTasks[0].getLastCompletedTime()[0]);
         System.out.print(':');
-        System.out.print(feedTheDog.getLastCompletedTime()[1]);
+        System.out.print(myDailyTasks[0].getLastCompletedTime()[1]);
         System.out.println();
         System.out.println("Due time:");
-        System.out.print(feedTheDog.getDueTime()[0]);
+        System.out.print(myDailyTasks[0].getDueTime()[0]);
         System.out.print(':');
-        System.out.print(feedTheDog.getDueTime()[1]);
+        System.out.print(myDailyTasks[0].getDueTime()[1]);
         System.out.println();
         System.out.println("Is it completed?");
-        System.out.println(feedTheDog.checkIfComplete());
+        System.out.println(myDailyTasks[0].checkIfComplete());
         System.out.println("Is it past due?");
-        System.out.println(feedTheDog.checkIfPastDue());
+        System.out.println(myDailyTasks[0].checkIfPastDue());
 
-        feedTheDog.setLastCompletedTime(20, 50);
+        myDailyTasks[0].setLastCompletedTime(20, 50);
         System.out.println("Completing Task 20:50");
 
 
         System.out.println("Last completed time:");
-        System.out.print(feedTheDog.getLastCompletedTime()[0]);
+        System.out.print(myDailyTasks[0].getLastCompletedTime()[0]);
         System.out.print(':');
-        System.out.print(feedTheDog.getLastCompletedTime()[1]);
+        System.out.print(myDailyTasks[0].getLastCompletedTime()[1]);
         System.out.println();
         System.out.println("Is it completed?");
-        System.out.println(feedTheDog.checkIfComplete());
+        System.out.println(myDailyTasks[0].checkIfComplete());
         System.out.println("Is it past due?");
-        System.out.println(feedTheDog.checkIfPastDue());
+        System.out.println(myDailyTasks[0].checkIfPastDue());
 
 
     }

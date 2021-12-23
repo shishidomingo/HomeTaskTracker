@@ -20,6 +20,8 @@ public class WeeklyTask implements Task{
         lastCompletedTime = new int[]{23, 59};
     }
 
+    @Override
+    public String getName(){return this.name;}
 
     @Override
     public void setLastCompletedTime(int hr, int min) {

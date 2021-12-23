@@ -17,6 +17,8 @@ public interface Task {
 
     int[] getDueTime();
 
+    String getName();
+
     //void setDueDay(String day);
 
     //void getDueDay();
