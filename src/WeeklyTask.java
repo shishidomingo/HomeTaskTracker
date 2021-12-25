@@ -1,3 +1,4 @@
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -28,7 +29,7 @@ public class WeeklyTask implements Task{
         int thisTime[] = new int[] {hr, min};
         this.lastCompletedTime = thisTime;
         //if (this.checkIfComplete() == true){ isComplete = true;};
-        this.isComplete = true;
+        //this.isComplete = true;
     }
 
     @Override
@@ -36,13 +37,15 @@ public class WeeklyTask implements Task{
         return this.lastCompletedTime;
     }
 
-    public void setLastCompletedDay(String day){
+    public void setLastCompleted(int hr, int min, String day){
+        this.setLastCompletedTime(hr, min);
         this.lastCompletedDay = day;
         this.isComplete = true;
     }
 
     public String getLastCompletedDay() {
         return this.lastCompletedDay;
+
     }
     @Override
     public void setDueTime(int hr, int min) {
@@ -89,8 +92,28 @@ public class WeeklyTask implements Task{
     @Override
     public boolean checkIfPastDue() {
         LocalDateTime now = LocalDateTime.now();
+        final String[] days = new String[] {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"};
+        boolean dayIsPastDue = false;
+        int dayNumber = 0;
+        int dueDayNumber = 0;
 
-        if (this.checkIfComplete() == false && now.getHour() <= this.getLastCompletedTime()[0] && now.getMinute() < this.getLastCompletedTime()[1]){
+        DayOfWeek day = now.getDayOfWeek();
+        for (int i = 0; i < days.length; i++){
+            if (i == day.getValue()) {
+                dayNumber = i;
+            }
+        }
+        for (int i = 0; i < days.length; i++){
+            if (this.dueDay == days[i]){
+                dueDayNumber = i;
+            }
+        }
+
+        if (dayNumber <= dueDayNumber){
+            dayIsPastDue = false;
+        }
+
+        if (this.checkIfComplete() == false && now.getHour() <= this.getLastCompletedTime()[0] && now.getMinute() < this.getLastCompletedTime()[1] && !dayIsPastDue){
             return true;
         }
         return false;
